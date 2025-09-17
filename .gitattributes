@@ -1,3 +1,4 @@
 Tasks/task15/sales_data.xls filter=lfs diff=lfs merge=lfs -text
 Tasks/task15/sales_data.zip filter=lfs diff=lfs merge=lfs -text
 Task/task15/sales_data.xls filter=lfs diff=lfs merge=lfs -text
+TASK/task15/sales_data.xls filter=lfs diff=lfs merge=lfs -text
