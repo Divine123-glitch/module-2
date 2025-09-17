@@ -1,0 +1,178 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# CLASS TASK 3: Matrix Operations\n",
+    "\n",
+    "Given matrices A = [[2, -1], [0, 3]], B = [[1, 4], [-2, 5]] and scalars c = 2, d = 3, we will:\n",
+    "\n",
+    "- **Part a**: Compute cA, dB, and (c + d)A.\n",
+    "- **Part b**: Verify the scalar multiplication property (c + d)A = cA + dA.\n",
+    "- **Part c**: Find the transpose of matrices A and B.\n",
+    "- **Part d**: Check if A and B are invertible by computing their determinants, and find their inverses if applicable.\n",
+    "\n",
+    "We will use Python with NumPy for matrix operations."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "\n",
+    "# Define matrices A, B and scalars c, d\n",
+    "A = np.array([[2, -1], [0, 3]])\n",
+    "B = np.array([[1, 4], [-2, 5]])\n",
+    "c = 2\n",
+    "d = 3\n",
+    "\n",
+    "print('Matrix A:\\n', A)\n",
+    "print('Matrix B:\\n', B)\n",
+    "print('Scalars: c =', c, ', d =', d)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Part a: Compute cA, dB, and (c + d)A\n",
+    "\n",
+    "We multiply each matrix by the respective scalar by multiplying every element of the matrix by the scalar."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Compute cA\n",
+    "cA = c * A\n",
+    "print('cA (2A):\\n', cA)\n",
+    "\n",
+    "# Compute dB\n",
+    "dB = d * B\n",
+    "print('dB (3B):\\n', dB)\n",
+    "\n",
+    "# Compute (c + d)A\n",
+    "c_plus_d_A = (c + d) * A\n",
+    "print('(c + d)A (5A):\\n', c_plus_d_A)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Part b: Verify Scalar Multiplication Property\n",
+    "\n",
+    "We verify the property (c + d)A = cA + dA by computing dA and adding it to cA, then comparing with (c + d)A."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Compute dA\n",
+    "dA = d * A\n",
+    "print('dA (3A):\\n', dA)\n",
+    "\n",
+    "# Compute cA + dA\n",
+    "cA_plus_dA = cA + dA\n",
+    "print('cA + dA:\\n', cA_plus_dA)\n",
+    "\n",
+    "# Verify (c + d)A == cA + dA\n",
+    "is_equal = np.array_equal(c_plus_d_A, cA_plus_dA)\n",
+    "print('Does (c + d)A equal cA + dA?', is_equal)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Part c: Transpose of Matrices A and B\n",
+    "\n",
+    "The transpose of a matrix swaps its rows and columns."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Transpose of A\n",
+    "A_T = A.T\n",
+    "print('Transpose of A:\\n', A_T)\n",
+    "\n",
+    "# Transpose of B\n",
+    "B_T = B.T\n",
+    "print('Transpose of B:\\n', B_T)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Part d: Check Invertibility and Compute Inverses\n",
+    "\n",
+    "A matrix is invertible if its determinant is non-zero. For a 2x2 matrix [[a, b], [c, d]], the determinant is ad - bc. If invertible, the inverse is computed using NumPy."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Determinant of A\n",
+    "det_A = np.linalg.det(A)\n",
+    "print('Determinant of A:', det_A)\n",
+    "\n",
+    "# Check invertibility and compute inverse of A\n",
+    "if det_A != 0:\n",
+    "    A_inv = np.linalg.inv(A)\n",
+    "    print('A is invertible. Inverse of A:\\n', A_inv)\n",
+    "else:\n",
+    "    print('A is not invertible.')\n",
+    "\n",
+    "# Determinant of B\n",
+    "det_B = np.linalg.det(B)\n",
+    "print('Determinant of B:', det_B)\n",
+    "\n",
+    "# Check invertibility and compute inverse of B\n",
+    "if det_B != 0:\n",
+    "    B_inv = np.linalg.inv(B)\n",
+    "    print('B is invertible. Inverse of B:\\n', B_inv)\n",
+    "else:\n",
+    "    print('B is not invertible.')"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.5"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
